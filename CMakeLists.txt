@@ -13,9 +13,9 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND DEFINED ENV{CMAKE_TOOLCHAIN_FILE})
 endif()
 
 # Name of the project
-project(ParticleNGLBuild)
+project(BlankNGLBuild)
 # This is the name of the Exe change this and it will change everywhere
-set(TargetName ParticleNGL)
+set(TargetName BlankNGL)
 # This will include the file NGLConfig.cmake, you need to add the location to this either using
 # -DCMAKE_PREFIX_PATH=~/NGL or as a system environment variable. 
 find_package(NGL CONFIG REQUIRED)
@@ -43,9 +43,7 @@ include_directories(include $ENV{HOME}/NGL/include)
 target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp  
 			${PROJECT_SOURCE_DIR}/src/NGLScene.cpp  
 			${PROJECT_SOURCE_DIR}/src/NGLSceneMouseControls.cpp  
-			${PROJECT_SOURCE_DIR}/include/NGLScene.h
-            ${PROJECT_SOURCE_DIR}/include/Particle.h
-            ${PROJECT_SOURCE_DIR}/src/Emitter.cpp
+			${PROJECT_SOURCE_DIR}/include/NGLScene.h  
 )
 
 target_link_libraries(${TargetName} PRIVATE Qt::Widgets Qt::OpenGL NGL)
@@ -53,9 +51,5 @@ target_link_libraries(${TargetName} PRIVATE Qt::Widgets Qt::OpenGL NGL)
 add_custom_target(${TargetName}CopyShaders ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_CURRENT_SOURCE_DIR}/shaders
-    $<TARGET_FILE_DIR:${TargetName}>/shaders#
-
-#        COMMAND ${CMAKE_COMMAND} -E copy_directory
-#        ${CMAKE_CURRENT_SOURCE_DIR}/texture
-#        $<TARGET_FILE_DIR:${TargetName}>/texture
+    $<TARGET_FILE_DIR:${TargetName}>/shaders
 )
