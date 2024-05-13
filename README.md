@@ -8,5 +8,8 @@ Create some type of glowing shader, it isn't working... I'm honestly struggling 
 
 <p>A <a href="https://learnopengl.com/Advanced-Lighting/HDR">link to opengl HDR</a>.</p>
 
-<p>A <a href="https://github.com/NCCA/FBODemos/tree/main)">link to NCCA on github FBOs</a>.</p>
+<p>A <a href="https://github.com/NCCA/FBODemos/tree/main">link to NCCA on github FBOs</a>.</p>
+
+<p>A <a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">link to opengl framebuffer</a>.</p>
+
 
