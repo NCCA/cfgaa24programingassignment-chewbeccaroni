@@ -42,7 +42,7 @@ void NGLScene::initializeGL() {
     glEnable(GL_MULTISAMPLE);
     ngl::ShaderLib::loadShader("ParticleShader","shaders/ParticleVertex.glsl","shaders/ParticleFragment.glsl");
     ngl::ShaderLib::use("ParticleShader");
-    m_view=ngl::lookAt({0,0,4},{2,0,0},{0,1,0});
+    m_view=ngl::lookAt({15,15,15},{0,0,0},{0,1,0});
 }
 
 
@@ -54,20 +54,20 @@ void NGLScene::paintGL()
   glViewport(0,0,m_win.width,m_win.height);
   ngl::Transformation tx;
 
-  tx.setScale(0.1f,0.1f,0.1f);
-  tx.setPosition(2.5f,-0.7f,0.0f);
+  tx.setScale(1.0f,1.0f,1.0f);
+  tx.setPosition(0.0f,0.0f,0.0f);
   ngl::ShaderLib::setUniform("Colour", 1.0f, 0.0f, 0.0f, 1.0f);
   ngl::ShaderLib::setUniform("MVP", m_project*m_view*tx.getMatrix());
-  ngl::VAOPrimitives::draw(ngl::dragon);
+  ngl::VAOPrimitives::draw(ngl::cube);
 
   tx.reset();
-  tx.setPosition(1.3f,0.5f,0.0f);
-  tx.getInverseMatrix();
-  tx.setScale(0.5f,0.5f,0.5f);
-  tx.addRotation(0,0,-45);
-  ngl::ShaderLib::setUniform("Colour", 0.9f, 0.67f, 0.4f, 1.0f);
-  ngl::ShaderLib::setUniform("MVP", m_project*m_view*tx.getMatrix());
-  ngl::VAOPrimitives::draw(ngl::teapot);
+//  tx.setPosition(1.3f,0.5f,0.0f);
+//  tx.getInverseMatrix();
+//  tx.setScale(0.5f,0.5f,0.5f);
+//  tx.addRotation(0,0,-45);
+//  ngl::ShaderLib::setUniform("Colour", 0.9f, 0.67f, 0.4f, 1.0f);
+//  ngl::ShaderLib::setUniform("MVP", m_project*m_view*tx.getMatrix());
+//  ngl::VAOPrimitives::draw(ngl::teapot);
     auto rotX = ngl::Mat4::rotateX(m_win.spinXFace);
     auto rotY = ngl::Mat4::rotateY(m_win.spinYFace);
     auto mouseRotation = rotX * rotY;
@@ -75,8 +75,10 @@ void NGLScene::paintGL()
     mouseRotation.m_m[3][0] = m_modelPos.m_x;
     mouseRotation.m_m[3][0] = m_modelPos.m_x;
 
-    ngl::ShaderLib::setUniform("MVP",m_project*m_view*mouseRotation);
+//    ngl::ShaderLib::setUniform("MVP",m_project*m_view*mouseRotation);
     glPointSize(4);
+
+    ngl::ShaderLib::use("ParticleShader");
 
 
 // set up floating point framebuffer to render scene to
