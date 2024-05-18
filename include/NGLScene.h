@@ -36,10 +36,13 @@ class NGLScene : public QOpenGLWindow
     /// use this to setup any default GL stuff
     //----------------------------------------------------------------------------------------------------------------------
     void initializeGL() override;
+
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this is called everytime we want to draw the scene
     //----------------------------------------------------------------------------------------------------------------------
     void paintGL() override;
+
+    void renderQuad();
     //----------------------------------------------------------------------------------------------------------------------
     /// @brief this is called everytime we resize the window
     //----------------------------------------------------------------------------------------------------------------------
@@ -76,6 +79,8 @@ private:
     /// @param _event the Qt Event structure
     //----------------------------------------------------------------------------------------------------------------------
     void wheelEvent( QWheelEvent *_event) override;
+
+    void timerEvent(QTimerEvent *_event) override;
     /// @brief windows parameters for mouse control etc.
     WinParams m_win;
     /// position for our model
@@ -83,6 +88,13 @@ private:
 
     ngl::Mat4 m_view;
     ngl::Mat4 m_project;
+
+    GLuint hdrFBO;
+    GLuint colorBuffers[2];
+    GLuint blurFBO[2];
+    GLuint blurTextures[2];
+
+
 
 };
 
