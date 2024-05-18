@@ -2,7 +2,10 @@
 
 - Assignment Idea
 
-Create some type of glowing shader, it isn't working... I'm honestly struggling way too much with this and I don't want to fail the unit...
+The aim of my project was to create some type of glowing effect using 2 shaders in c++ using OpenGL. One shader renders the base colour or texture, the other
+renders a blurred framebuffer using kernels.
+
+From the start I ran into issues. I couldn't get the blurred shader to work. I tried many different methods from many different sources but nothing seemed to solve my issues. I asked ChatGPT and it told me that I was blurring the textures rather than the frame buffer itself.
 
 <p>A <a href="https://learnopengl.com/Advanced-Lighting/Bloom">link to opengl bloom</a>.</p>
 
