@@ -90,7 +90,7 @@ private:
     ngl::Mat4 m_project;
 
     GLuint hdrFBO;
-    GLuint colorBuffers[2];
+    GLuint colourBuffers[2];
     GLuint blurFBO[2];
     GLuint blurTextures[2];
 
