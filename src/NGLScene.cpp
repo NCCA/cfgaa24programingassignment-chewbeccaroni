@@ -38,7 +38,7 @@ void NGLScene::initializeGL()
     ngl::ShaderLib::use("BlurShader");
     m_view = ngl::lookAt({30, 0, 15}, {0, 5, 0}, {0, 1, 0});
 
-    // Setup framebuffer and textures
+    // Sets up framebuffer and textures
     glGenFramebuffers(1, &hdrFBO);
     glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
 
