@@ -41,19 +41,30 @@ PaintGL adds the dragon to the scene and goes through a loop of adding the blur 
 
 ## nglscenemousecontrols.cpp
 
-I will breifly talk about the functions in here, however as these were part of the original code from Jon Macey, I can't claim that I created these. When using the scene, the left mouse buttoms rotates the camera, and the right mouse button moves it around the scene whether that be in the x, y or z axis. It updates every frame so it rerenders the scene every frame. Therefore 'glClear' is needed so that the frames update and don't add on top of eachother. (Alhtough this does create a cool effect as seen below)
+I will breifly talk about the functions in here, however as these were part of the original code from Jon Macey, I can't claim that I created these. When using the scene, the left mouse buttoms rotates the camera, and the right mouse button moves it around the scene whether that be in the x, y or z axis. This didn't work in the scene at first (or stopped working) but I managed to fix that issue in nglscene.cpp. It updates every frame so it rerenders the scene every frame. Therefore 'glClear' is needed so that the frames update and don't add on top of eachother. (Alhtough this does create a cool effect as seen below)
 
 ![Image](https://github.com/NCCA/cfgaa24programingassignment-chewbeccaroni/blob/main/Images/effect.png)
 
 # Final Result
 
+![Image](https://github.com/NCCA/cfgaa24programingassignment-chewbeccaroni/blob/main/Images/final.png)
+
+I'm quite disappointed that I didn't get the blur effect to work as that would have made this look a lot more visually pleasing. However, I'm happy I tried and this project as a whole has helped me better understand my limits but also the limits of OpenGL. I found it hard to find out how to fix errors on the internet as alot of the code sources come from Jon Macey's NCCA github library (my own choice as it is what we were learning in workshops) so unless ChatGPT gives you a good reliable answer (0.6% probibility) it takes a while to figure out why an error isn't working which really backtracked me and slowed me down.
 
 [1] <p>A <a href="https://learnopengl.com/Advanced-Lighting/Bloom">link to opengl bloom</a>.</p>
 
+This website helps with establishing the set up of a bloom/glow effect but creating 2 different shaders and combining them. I used this as reference quite often, however, some parts are outdated (along with a lot of other elements in this website) so I had to figure out how to change some functions in the particle shader.
+
 [2] <p>A <a href="https://learnopengl.com/Advanced-Lighting/HDR">link to opengl HDR</a>.</p>
+
+A website that talks about exposure and brightness. It uses similar methods to bloom but changes things slightly so I used it to analyse and create some functions but in the end I didn't use them. 
 
 [3] <p>A <a href="https://github.com/NCCA/FBODemos/tree/main">link to NCCA on github FBOs</a>.</p>
 
+A whole repository for FBO's so very handy for what I'm doing. If I had issues I used this as a source as to why I'm getting such errors. Again, bit outdated and code has been updated since so some parts weren't useful but some were.
+
 [4] <p>A <a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">link to opengl framebuffer</a>.</p>
+
+The most useful of my sources. This really helped my understand what offsets and kernels did and why I needed them. After I understood this, I could go onto use reference [1] more easily and used this in my blurring fragment shader.
 
 
