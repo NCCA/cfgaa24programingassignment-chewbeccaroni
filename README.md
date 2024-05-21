@@ -17,12 +17,22 @@ Whilst using this particle shader, I'm going to comment on the parts that didn't
 
 The image above is a repeat of the final code but includes a brightness like effect. I can't get this to work now but this made the colours in the texture brighter or darker depending on the values used in the main function.
 
-<p>A <a href="https://learnopengl.com/Advanced-Lighting/Bloom">link to opengl bloom</a>.</p>
+![Image](https://github.com/NCCA/cfgaa24programingassignment-chewbeccaroni/blob/main/Images/fragment.png)
 
-<p>A <a href="https://learnopengl.com/Advanced-Lighting/HDR">link to opengl HDR</a>.</p>
+This next one was my first attempt at a blurring effect using offsets and kernels. Using Advanced OpenGL [4] I divided everything by 16 in the kernel so that the colours shown aren't really bright and overexposed. Then you create offsets for the texture and multiply it by the weight of the kernels. The problem came when adding the texture part, because I haven't been able to add 2 shaders at the same time, I'm unable to check if this code blurs the texture or not as it shown a black screen as it comes off screen textures rather than added in textures from me. This was when I put this into ChatGPT to ask what was wrong with it and told me I was blurring the texture rather than as a frambuffer. I went through a couple of iterations of similar code to figure out what went wrong but it ended up going to waste.
 
-<p>A <a href="https://github.com/NCCA/FBODemos/tree/main">link to NCCA on github FBOs</a>.</p>
+Therefore, I went from a different angle and looked more at Bloom OpenGL [1] to create the blurring effect. I then ran into issues on this end as the sources online aren't up to date so some vec3/vec4 functions had changed. It also missed out code about lighting but as a novice coder I couldn't figure out what it was telling me. I concluded that it didn't make much of a difference and continued trying out methods. I used a version where it takes samples of distance to blur, to make more of a DOF effect instead but this wasn't what I was going for so this became anothe deadend. In the end I added the code into another particle shader called 'ParticleBlur' using OpenGL Bloom [1] again.
 
-<p>A <a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">link to opengl framebuffer</a>.</p>
+## NGLScene.cpp
+
+The problem however was the fact that I couldn't get 2 shaders to work similtaneously in NGLScene.cpp even after trying many methods. At one point I had a function called 'renderQuad' which did exactly that, It used to triangles to render a 2D texture into the scene, but this got rid of the dragon so this got discared earlier on.
+
+[1] <p>A <a href="https://learnopengl.com/Advanced-Lighting/Bloom">link to opengl bloom</a>.</p>
+
+[2] <p>A <a href="https://learnopengl.com/Advanced-Lighting/HDR">link to opengl HDR</a>.</p>
+
+[3] <p>A <a href="https://github.com/NCCA/FBODemos/tree/main">link to NCCA on github FBOs</a>.</p>
+
+[4] <p>A <a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">link to opengl framebuffer</a>.</p>
 
 
