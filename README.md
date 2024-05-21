@@ -43,6 +43,11 @@ PaintGL adds the dragon to the scene and goes through a loop of adding the blur 
 
 I will breifly talk about the functions in here, however as these were part of the original code from Jon Macey, I can't claim that I created these. When using the scene, the left mouse buttoms rotates the camera, and the right mouse button moves it around the scene whether that be in the x, y or z axis. It updates every frame so it rerenders the scene every frame. Therefore 'glClear' is needed so that the frames update and don't add on top of eachother. (Alhtough this does create a cool effect as seen below)
 
+![Image](https://github.com/NCCA/cfgaa24programingassignment-chewbeccaroni/blob/main/Images/effect.png)
+
+# Final Result
+
+
 [1] <p>A <a href="https://learnopengl.com/Advanced-Lighting/Bloom">link to opengl bloom</a>.</p>
 
 [2] <p>A <a href="https://learnopengl.com/Advanced-Lighting/HDR">link to opengl HDR</a>.</p>
