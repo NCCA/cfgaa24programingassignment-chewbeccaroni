@@ -23,9 +23,25 @@ This next one was my first attempt at a blurring effect using offsets and kernel
 
 Therefore, I went from a different angle and looked more at Bloom OpenGL [1] to create the blurring effect. I then ran into issues on this end as the sources online aren't up to date so some vec3/vec4 functions had changed. It also missed out code about lighting but as a novice coder I couldn't figure out what it was telling me. I concluded that it didn't make much of a difference and continued trying out methods. I used a version where it takes samples of distance to blur, to make more of a DOF effect instead but this wasn't what I was going for so this became anothe deadend. In the end I added the code into another particle shader called 'ParticleBlur' using OpenGL Bloom [1] again.
 
-## NGLScene.cpp
+## SRC
+
+### nglscene.cpp - InitializeGL
 
 The problem however was the fact that I couldn't get 2 shaders to work similtaneously in NGLScene.cpp even after trying many methods. At one point I had a function called 'renderQuad' which did exactly that, It used to triangles to render a 2D texture into the scene, but this got rid of the dragon so this got discared earlier on.
+
+![Image](https://github.com/NCCA/cfgaa24programingassignment-chewbeccaroni/blob/main/Images/initilizegl.png)
+
+So instead I added the framebuffer and particle shaders through intializeGL. This establishes the background colour of the window and adds the shaders into the scene. The same code is repeated twice, however the second half isn't needed but just there for if I got the second particle shader to work. It was made for the framebuffer effects but never went through. It also inlcudes the camera for the scene.
+
+## nglscne.cpp - PaintGL
+
+![Image](https://github.com/NCCA/cfgaa24programingassignment-chewbeccaroni/blob/main/Images/paintgl.png)
+
+PaintGL adds the dragon to the scene and goes through a loop of adding the blur texture by going between the 2 shaders like a ping pong effect. It includes transformations through NGL. Before starting this project and adding a shader, the colour of the dragon was red, hence "Colour" being set to red but not showing up. I also commented out the 'glUniform1i' as it kept spraying warnings at me. I went to the source library on Github to figure out it was this line specifically that as creating that warning which it was.
+
+## nglscenemousecontrols.cpp
+
+I will breifly talk about the functions in here, however as these were part of the original code from Jon Macey, I can't claim that I created these. When using the scene, the left mouse buttoms rotates the camera, and the right mouse button moves it around the scene whether that be in the x, y or z axis. It updates every frame so it rerenders the scene every frame. Therefore 'glClear' is needed so that the frames update and don't add on top of eachother. (Alhtough this does create a cool effect as seen below)
 
 [1] <p>A <a href="https://learnopengl.com/Advanced-Lighting/Bloom">link to opengl bloom</a>.</p>
 
